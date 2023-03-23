@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LoginController extends AbstractController
 {
     /**
-     * @Route("/", name="app_login")
+     * @Route("/login", name="app_login")
      */
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
