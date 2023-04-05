@@ -9,3 +9,21 @@ $primary: darken(#3497db, 20%);
 #login{
     background-color: #3497db;
 }
+
+.menu{
+    padding: 10px 20px;
+    background-color: #146093;
+    color: #fff;
+
+    .links{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        a{
+            color: #fff;
+            text-decoration: none;
+            
+        }
+    }
+}

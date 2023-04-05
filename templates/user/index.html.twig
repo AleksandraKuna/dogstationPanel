@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% use "panel/menu.html.twig" %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+{{ block("menu") }}
+
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title text-uppercase mb-0">Pracownicy</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table no-wrap user-table mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Imię</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Status</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Dodany</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Zarządzaj</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
