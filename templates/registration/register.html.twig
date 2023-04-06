@@ -1,17 +1,33 @@
 {% extends 'base.html.twig' %}
+{% use "panel/menu.html.twig" %}
 
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.login) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+{{ block("menu") }}
+<div class="container ">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mt-4">
+            <div class="card-body">
+                    <h1>Dodaj użytkownika</h1>
+                {{ form_start(registrationForm) }}
+                <div class="form-floating mb-4">
+                    {{ form_widget(registrationForm.login, {'attr': {'class': 'form-control', placeholder: 'login'}}) }}
+                    <label>{{ form_label(registrationForm.login) }}</label>
+                </div>
+                <div class="form-floating mb-4">
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', placeholder: 'haslo'}})}}
+                    <label>{{ form_label(registrationForm.plainPassword) }}</label>
+                </div>
+                <div class="form mb-4">
+                    <label>{{ form_label(registrationForm.roles) }}</label>
+                    {{ form_widget(registrationForm.roles, {'attr': {'class': 'form-select', 'aria-label': 'status'}}) }}
+                </div>
+                <button class="btn w-100 btn-primary btn-lg btn-block" type="submit">DODAJ</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

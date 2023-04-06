@@ -10,8 +10,15 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card mt-4">
-            <div class="card-body">
-                <h5 class="card-title text-uppercase mb-0">Pracownicy</h5>
+            {# <div class="card-header align-items-center px-3 px-md-5">
+            
+            </div> #}
+            <div class="card-body d-flex justify-content-between">
+                <h5 class="card-title text-uppercase mb-0"> UŻYTKOWNICY</h5>
+                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add-contact" href="{{url("app_register")}}">
+                    <i class="fa fa-user-plus"></i> Dodaj
+                </a>
+
             </div>
             <div class="table-responsive">
                 <table class="table no-wrap user-table mb-0">
