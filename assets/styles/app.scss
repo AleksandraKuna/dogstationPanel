@@ -1,10 +1,25 @@
 // assets/styles/global.scss
 
 // customize some Bootstrap variables
-$primary: darken(#3497db, 20%);
+
+$white: #ffffff;
+$body-bg: #ededed;
+
+$theme-colors: (
+    "light":      #ededed,
+    "dark":       #136093,
+    "primary":    #2351ce,
+    "secondary":  #ff3d60,
+    "info":       #3397db,
+    "success":    #00a964,
+    "warning":    #e2cd00,
+    "danger":     #f12200,
+);
 
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
+
+
 
 #login{
     background-color: #3497db;
@@ -26,4 +41,30 @@ $primary: darken(#3497db, 20%);
             
         }
     }
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+.btn-circle.btn-lg {
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
 }

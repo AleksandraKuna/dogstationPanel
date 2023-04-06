@@ -5,7 +5,7 @@
 
 {% block body %}
 {{ block("menu") }}
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <div class="container">
 <div class="row">
     <div class="col-md-12">
@@ -17,15 +17,37 @@
                 <table class="table no-wrap user-table mb-0">
                   <thead>
                     <tr>
-                      <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium ps-4">#</th>
                       <th scope="col" class="border-0 text-uppercase font-medium">Imię</th>
                       <th scope="col" class="border-0 text-uppercase font-medium">Status</th>
                       <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
-                      <th scope="col" class="border-0 text-uppercase font-medium">Dodany</th>
+                      <th scope="col" class="border-0 text-uppercase font-medium">Utworzony</th>
                       <th scope="col" class="border-0 text-uppercase font-medium">Zarządzaj</th>
                     </tr>
                   </thead>
                   <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td class="ps-4">{{user.id}}</td>
+                            <td><h5 class="font-medium mb-0">{{user.username}}</h5></td>
+                            <td>
+                                <span class="text-muted">
+                                    {% if "ROLE_ADMIN" in user.Roles %}
+                                        ADMIN
+                                    {% else %}
+                                        PRACOWNIK
+                                    {% endif %}
+                                </span>
+                            </td>
+                            <td><span class="text-muted">{{user.Email}}</span></td>
+                            <td><span class="text-muted">{{user.dateAdded|date('Y-m-d')}}</span></td>
+                            <td>
+                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle disabled"><i class="fa fa-key"></i> </button>
+                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2 disabled"><i class="fa fa-trash"></i> </button>
+                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2 disabled"><i class="fa fa-edit"></i> </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
                   </tbody>
                 </table>
             </div>

@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -43,6 +44,20 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('roles', ChoiceType::class, array(
+                'attr'  =>  array('class' => 'form-control',
+                'style' => 'margin:5px 0;'),
+                'choices' => 
+                array
+                (
+                    'admin' => 'ROLE_ADMIN',
+                    'pracownik' => 'ROLE_USER',
+                ) 
+                ,
+                'multiple' => true,
+                'required' => true,
+                )
+            )
         ;
     }
 
