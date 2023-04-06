@@ -5,8 +5,10 @@
     <p>DOGSTATION</p>
     <div class="links">
         <a href="/">PANEL</a>
-
-        <a href="{{url("app_user")}}">UŻYTKOWNICY</a>
+        {% if is_granted('ROLE_ADMIN') %} 
+            <a href="{{url("app_user")}}">UŻYTKOWNICY</a>
+        {% endif %}
+        <a href="{{url("app_logout")}}" class="btn btn-info"><i class="fa fa-sign-out"></i> Wyloguj</a>
     </div>
 </div>
 
