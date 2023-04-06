@@ -39,6 +39,9 @@ class RegistrationFormType extends AbstractType
                 ],
                 'label' => 'Hasło'
             ])
+            ->add('email', null, [
+                'label' => 'Email'
+            ])
             ->add('roles', ChoiceType::class, array(
                 'attr'  =>  array('class' => 'form-control',
                 'style' => 'margin:5px 0;'),

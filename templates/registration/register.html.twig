@@ -20,6 +20,10 @@
                     {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', placeholder: 'haslo'}})}}
                     <label>{{ form_label(registrationForm.plainPassword) }}</label>
                 </div>
+                <div class="form-floating mb-4">
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', placeholder: 'email'}}) }}
+                    <label>{{ form_label(registrationForm.email) }}</label>
+                </div>
                 <div class="form mb-4">
                     <label>{{ form_label(registrationForm.roles) }}</label>
                     {{ form_widget(registrationForm.roles, {'attr': {'class': 'form-select', 'aria-label': 'status'}}) }}
