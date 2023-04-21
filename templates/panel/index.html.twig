@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 {% use "panel/menu.html.twig" %}
+{% use "panel/parts/workTimeAdmin.html.twig" %}
+{% use "panel/parts/workTimeUser.html.twig" %}
 
 
 
 {% block title %}Hello PanelController!{% endblock %}
 
 {% block body %}
-{{ block("menu") }}
+
+    {{ block("menu") }}
+
+    {% if is_granted('ROLE_ADMIN') %} 
+        {{ block("workTimeAdmin") }}
+    {% else %}
+         {{ block("workTimeUser") }}
+    {% endif %}
+
 
 {% endblock %}

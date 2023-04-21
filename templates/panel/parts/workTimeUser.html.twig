@@ -1,0 +1,27 @@
+{% block workTimeUser %}
+<div class="workTimeUser {% if workTimeStatus.status == 'active' %} stop bg-success {% else %} start bg-secondary {% endif %} py-3 shadow-sm">
+    <div class="container">
+        <button class="workTime btn btn-xl btn-light rounded-pill shadow-sm">
+            <span>
+                {% if workTimeStatus.status == 'active' %}
+                    ZAKOŃCZ PRACĘ
+                    <i class="fa fa-stop ms-2" aria-hidden="true"></i>
+                {% else %}
+                    ZACZNIJ  PRACĘ
+                    <i class="fa fa-play ms-2" aria-hidden="true"></i>
+                {% endif %}
+            </span>
+        </button>
+        <div class="date mb-0">
+            {% if workTimeStatus.status == 'active' %} 
+                {{ workTimeStatus.start|format_datetime(locale='pl') }}
+            {% else %}
+                {{ "now"|format_date(locale='pl') }}
+            {% endif %}
+            </div>
+        {# TODO: Timer #}
+        {# <p id="timer"><label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label></p> #}
+    </div>
+</div>
+
+{% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -49,6 +51,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="date", nullable=true)
      */
     private $dateAdded;
+
+    /**
+     * @ORM\OneToMany(targetEntity=WorkTime::class, mappedBy="user")
+     */
+    private $workTime;
+
+    public function __construct()
+    {
+        $this->start = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -159,6 +171,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDateAdded(\DateTimeInterface $dateAdded): self
     {
         $this->dateAdded = $dateAdded;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, WorkTime>
+     */
+    public function getWorkTime(): Collection
+    {
+        return $this->workTime;
+    }
+
+    public function addWorkTime(WorkTime $workTime): self
+    {
+        if (!$this->workTime->contains($workTime)) {
+            $this->workTime[] = $workTime;
+            $workTime->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkTime(WorkTime $workTime): self
+    {
+        if ($this->workTime->removeElement($workTime)) {
+            // set the owning side to null (unless already changed)
+            if ($workTime->getUser() === $this) {
+                $workTime->setUser(null);
+            }
+        }
 
         return $this;
     }

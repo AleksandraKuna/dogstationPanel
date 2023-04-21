@@ -1,6 +1,7 @@
 // assets/styles/global.scss
 
 // customize some Bootstrap variables
+@use "sass:map";
 
 $white: #ffffff;
 $body-bg: #ededed;
@@ -10,8 +11,10 @@ $theme-colors: (
     "dark":       #136093,
     "primary":    #146093,
     "secondary":  #ff3d60,
+    "secondaryDark":  #f52d4e,
     "info":       #3397db,
     "success":    #00a964,
+    "successDark":    #02926e,
     "warning":    #e2cd00,
     "danger":     #f12200,
 );
@@ -26,9 +29,11 @@ $theme-colors: (
 }
 
 .menu{
+    position: relative;
     padding: 10px 20px;
     background-color: #146093;
     color: #fff;
+    z-index: 100;
 
     .links{
         display: flex;
@@ -39,6 +44,29 @@ $theme-colors: (
             color: #fff;
             text-decoration: none;
             
+        }
+    }
+}
+
+.bg-pinkGradient{
+    background: linear-gradient(to top, map.get($theme-colors, "secondary") , map.get($theme-colors, "secondaryDark"));
+}
+.bg-greenGradient{
+    background: linear-gradient(to top, map.get($theme-colors, "success") , map.get($theme-colors, "successDark"));
+}
+
+.workTimeUser{
+    transition: background-color 1s;
+    .container{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 20px;
+
+        .date{
+            line-height: 40px;
+            font-size: 20px;
+            color: #fff;
         }
     }
 }
