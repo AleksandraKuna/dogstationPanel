@@ -1,39 +1,47 @@
 {% block workTimeAdmin %}
-<div class="container">
-<div class="row">
-    <div class="col-md-12">
-        <div class="card mt-4">
-            {# <div class="card-header align-items-center px-3 px-md-5">
-            
-            </div> #}
-            <div class="card-body d-flex justify-content-between">
-                <h5 class="card-title text-uppercase mb-0"> PRACOWNICY</h5>
-            </div>
-            <div class="table-responsive">
-                <table class="table no-wrap user-table mb-0 m-2">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="border-0">Pracownik</th>
-                      <th scope="col" class="border-0">Start pracy</th>
-                      <th scope="col" class="border-0">Zakończenie pracy</th>
-                      <th scope="col" class="border-0">Czas pracy</th>                    
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for user in usersTimeStatus.users %}
-                        <tr>
-                            <td>{{ user.user.login }}</td>
-                            <td>{{ user.start|format_time(locale='pl') }}</td>
-                            <td>{{ user.stop ? user.stop|format_time(locale='pl') }}</td>
-                            <td>{{ user.stop ? date(user.stop).diff(date(user.start))|date("%hh %im") : date("now").diff(date(user.start))|date("%hh %im") }}</td>
-                        </tr>
-                    {% endfor %}
-                  </tbdoy>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<br />
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card mt-4">
+					{# <div class="card-header align-items-center px-3 px-md-5">
+																									            
+																									            </div> #}
+					<div class="card-body d-flex justify-content-between">
+						<h5 class="card-title text-uppercase mb-0">
+							PRACOWNICY</h5>
+					</div>
+					<div class="table-responsive">
+						<table class="table no-wrap user-table mb-0 m-2">
+							<thead>
+								<tr>
+									<th scope="col">Pracownik</th>
+									<th scope="col">Start pracy</th>
+									<th scope="col">Zakończenie pracy</th>
+									<th scope="col">Czas pracy</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% if usersTimeStatus.users is not empty %}
+									{% for user in usersTimeStatus.users %}
+										<tr>
+											<td>{{ user.user.login }}</td>
+											<td>{{ user.start|format_time(locale='pl') }}</td>
+											<td>{{ user.stop ? user.stop|format_time(locale='pl') }}</td>
+											<td>{{ user.stop ? date(user.stop).diff(date(user.start))|date("%hh %im") : date("now").diff(date(user.start))|date("%hh %im") }}</td>
+										</tr>
+									{% endfor %}
+								{% else %}
+									<tr>
+										<td colspan='4' class="text-center">Brak rozpoczętych rejestracji czasu pracy</td>
+									</tr>
+								{% endif %}
+								</tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
 {% endblock %}
