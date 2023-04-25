@@ -5,6 +5,8 @@
 
 $white: #ffffff;
 $body-bg: #ededed;
+$link-color: #146093;
+$link-hover-color: #3397db;
 
 $theme-colors: (
     "light":      #ededed,
@@ -80,12 +82,14 @@ $theme-colors: (
     line-height: 1.33;
 }
 .btn-circle.btn-lg {
-    width: 45px;
-    height: 45px;
-    border-radius: 25px;
-    font-size: 18px;
-    line-height: 1.2;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 16px;
+    line-height: 27px;
 }
+// a.btn-circle.btn-lg {
+// }
 
 .btn-circle {
     width: 30px;
@@ -95,4 +99,11 @@ $theme-colors: (
     text-align: center;
     font-size: 12px;
     line-height: 1.42857;
+}
+
+.navigation-back{
+    display: block;
+    text-decoration: none;
+    margin-top: 15px;
+    margin-bottom: -10px;
 }

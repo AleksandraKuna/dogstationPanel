@@ -20,22 +20,24 @@
 
             </div>
             <div class="table-responsive">
-                <table class="table no-wrap user-table mb-0">
+                <table class="table no-wrap user-table mb-0 m-2">
                   <thead>
                     <tr>
-                      <th scope="col" class="border-0 text-uppercase font-medium ps-4">#</th>
-                      <th scope="col" class="border-0 text-uppercase font-medium">Imię</th>
-                      <th scope="col" class="border-0 text-uppercase font-medium">Status</th>
-                      <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
-                      <th scope="col" class="border-0 text-uppercase font-medium">Utworzony</th>
-                      <th scope="col" class="border-0 text-uppercase font-medium">Zarządzaj</th>
+                      <th scope="col">#</th>
+                      <th scope="col">Login</th>
+                      <th scope="col">Imię</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Utworzony</th>
+                      <th scope="col">Zarządzaj</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for user in users %}
                         <tr>
-                            <td class="ps-4">{{user.id}}</td>
-                            <td><h5 class="font-medium mb-0">{{user.username}}</h5></td>
+                            <td class="ps-3">{{user.id}}</td>
+                            <td><strong>{{user.username}}</strong></td>
+                            <td><span class="text-muted">{{user.name}} {{user.surname}}</span></td>
                             <td>
                                 <span class="text-muted">
                                     {% if "ROLE_ADMIN" in user.Roles %}
@@ -48,9 +50,9 @@
                             <td><span class="text-muted">{{user.Email}}</span></td>
                             <td><span class="text-muted">{{user.dateAdded|date('Y-m-d')}}</span></td>
                             <td>
-                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle disabled"><i class="fa fa-key"></i> </button>
-                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2 disabled"><i class="fa fa-trash"></i> </button>
-                                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2 disabled"><i class="fa fa-edit"></i> </button>
+                                <button type="button" class="btn btn-outline-primary btn-circle btn-lg btn-circle disabled"><i class="fa fa-key"></i> </button>
+                                <button type="button" class="btn btn-outline-primary btn-circle btn-lg btn-circle ml-2 disabled"><i class="fa fa-trash"></i> </button>
+                                <a type="button" class="btn btn-primary btn-lg btn-circle ml-2" href="{{ path('app_users_edit', {'id': user.id}) }}"><i class="fa fa-edit"></i> </a>
                             </td>
                         </tr>
                     {% endfor %}

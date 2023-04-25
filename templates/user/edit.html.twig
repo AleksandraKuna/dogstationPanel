@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% use "panel/menu.html.twig" %}
+
+{% block title %}Edycja użytkownika
+{% endblock %}
+
+{% block body %}
+	{{ block("menu") }}
+	<div class="container">
+		<div class="row">
+            <div class="col-md-12">
+                <a href="{{ path('app_user') }}" class="navigation-back">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> powrót do listy użytkowników
+                </a>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h2 class="pb-3 text-center">Edycja użytkownika</h2>
+
+                        {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
+{% endblock %}

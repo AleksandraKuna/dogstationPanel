@@ -1,0 +1,26 @@
+{{ form_start(form) }}
+{# {{ form_widget(form) }} #}
+<div class="row mx-0">
+ <div class="form-floating mb-4 col-md-6 gx-1">
+  {{ form_widget(form.login, {'attr': {'class': 'form-control', placeholder: 'login'}}) }}
+  <label>{{ form_label(form.login) }}</label>
+ </div>
+ <div class="form-floating mb-4 col-md-6 gx-1">
+  {{ form_widget(form.email, {'attr': {'class': 'form-control', placeholder: 'email'}}) }}
+  <label>{{ form_label(form.email) }}</label>
+ </div>
+ <div class="form-floating mb-4 col-md-6 gx-1">
+  {{ form_widget(form.name, {'attr': {'class': 'form-control', placeholder: 'name'}}) }}
+  <label>{{ form_label(form.name) }}</label>
+ </div>
+ <div class="form-floating mb-4 col-md-6 gx-1">
+  {{ form_widget(form.surname, {'attr': {'class': 'form-control', placeholder: 'surname'}}) }}
+  <label>{{ form_label(form.surname) }}</label>
+ </div>
+ <div class="form mb-4 col-md-6 gx-1">
+  <label>{{ form_label(form.roles) }}</label>
+  {{ form_widget(form.roles, {'attr': {'class': 'form-select', 'aria-label': 'status'}}) }}
+ </div>
+</div>
+<button class="btn w-100 btn-primary btn-lg btn-block" type="submit">ZAPISZ</button>
+{{ form_end(form) }}

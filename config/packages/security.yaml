@@ -36,8 +36,8 @@ security:
     access_control:
         - { path: ^/login, roles: PUBLIC_ACCESS }
         - { path: ^/logout, roles: ROLE_USER }
-        - { path: ^/pracownicy, roles: ROLE_ADMIN }
         - { path: ^/register, roles: ROLE_ADMIN }
+        - { path: ^/uzytkownicy, roles: ROLE_ADMIN }
         - { path: ^/, roles: ROLE_USER }
 
 when@test:

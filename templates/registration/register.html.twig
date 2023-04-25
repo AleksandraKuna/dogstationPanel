@@ -1,37 +1,56 @@
 {% extends 'base.html.twig' %}
 {% use "panel/menu.html.twig" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
-{{ block("menu") }}
-<div class="container ">
-<div class="row">
-    <div class="col-md-12">
-        <div class="card mt-4">
-            <div class="card-body">
-                    <h1>Dodaj użytkownika</h1>
-                {{ form_start(registrationForm) }}
-                <div class="form-floating mb-4">
-                    {{ form_widget(registrationForm.login, {'attr': {'class': 'form-control', placeholder: 'login'}}) }}
-                    <label>{{ form_label(registrationForm.login) }}</label>
-                </div>
-                <div class="form-floating mb-4">
-                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', placeholder: 'haslo'}})}}
-                    <label>{{ form_label(registrationForm.plainPassword) }}</label>
-                </div>
-                <div class="form-floating mb-4">
-                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', placeholder: 'email'}}) }}
-                    <label>{{ form_label(registrationForm.email) }}</label>
-                </div>
-                <div class="form mb-4">
-                    <label>{{ form_label(registrationForm.roles) }}</label>
-                    {{ form_widget(registrationForm.roles, {'attr': {'class': 'form-select', 'aria-label': 'status'}}) }}
-                </div>
-                <button class="btn w-100 btn-primary btn-lg btn-block" type="submit">DODAJ</button>
-                {{ form_end(registrationForm) }}
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
+	{{ block("menu") }}
+	<div class="container ">
+		<div class="row">
+			<div class="col-md-12">
+                <a href="{{ path('app_user') }}" class="navigation-back">  
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> powrót do listy użytkowników
+                </a>
+				<div class="card mt-4">
+					<div class="card-body">
+						<h2 class="pb-3 text-center">Dodaj użytkownika</h2>
+						{{ form_start(registrationForm) }}
+						<div class="row mx-0">
+							<div class="form-floating mb-4 col-md-6 gx-1">
+								{{ form_widget(registrationForm.login, {'attr': {'class': 'form-control', placeholder: 'login'}}) }}
+								<label>{{ form_label(registrationForm.login) }}</label>
+							</div>
+							<div class="form-floating mb-4 col-md-6 gx-1">
+								{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', placeholder: 'email'}}) }}
+								<label>{{ form_label(registrationForm.email) }}</label>
+							</div>
+							<div class="form-floating mb-4 col-md-6 gx-1">
+								{{ form_widget(registrationForm.name, {'attr': {'class': 'form-control', placeholder: 'name'}}) }}
+								<label>{{ form_label(registrationForm.name) }}</label>
+							</div>
+							<div class="form-floating mb-4 col-md-6 gx-1">
+								{{ form_widget(registrationForm.surname, {'attr': {'class': 'form-control', placeholder: 'surname'}}) }}
+								<label>{{ form_label(registrationForm.surname) }}</label>
+							</div>
+               <div class="form-floating mb-4 col-md-6 gx-1">
+								{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', placeholder: 'haslo'}})}}
+								<label>{{ form_label(registrationForm.plainPassword) }}</label>
+							</div>
+							<div
+								class="form-floating mb-4 col-md-6 gx-1">{# {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', placeholder: 'haslo'}})}}
+																																			<label>{{ form_label(registrationForm.plainPassword) }}</label> #}
+							</div>
+
+							<div class="form mb-4 col-md-6 gx-1">
+								<label>{{ form_label(registrationForm.roles) }}</label>
+								{{ form_widget(registrationForm.roles, {'attr': {'class': 'form-select', 'aria-label': 'status'}}) }}
+							</div>
+						</div>
+						<button class="btn w-100 btn-primary btn-lg btn-block" type="submit">DODAJ</button>
+						{{ form_end(registrationForm) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
