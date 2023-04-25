@@ -14,7 +14,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
- * @UniqueEntity(fields={"login"}, message="There is already an account with this login")
+ * @UniqueEntity(fields={"login"}, message="Login zajęty")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {

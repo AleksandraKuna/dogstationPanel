@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,10 +21,14 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('login', null, [
                 'label' => 'Login'
+
             ])
-            ->add('plainPassword', PasswordType::class, [
+            ->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'type' => PasswordType::class,
+                'invalid_message' => 'Wprowadzone hasła nie są identyczne',
+                'options' => ['attr' => ['class' => 'password-field']],
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
@@ -32,12 +37,16 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Hasło musi się składać z conajmniej {{ limit }} znaków',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
-                'label' => 'Hasło'
+                'first_options'  => [
+                    'label' => 'Hasło',
+                    'error_bubbling' => true,
+                ],
+                'second_options' => ['label' => 'Powtórz hasło'],
             ])
             ->add('email', null, [
                 'label' => 'Email'
@@ -70,6 +79,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'error_bubbling' => true,
         ]);
     }
 }
