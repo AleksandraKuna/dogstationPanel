@@ -25,8 +25,8 @@
 									{% for user in usersTimeStatus.users %}
 										<tr>
 											<td>{{ user.user.login }}</td>
-											<td>{{ user.start|format_time(locale='pl') }}</td>
-											<td>{{ user.stop ? user.stop|format_time(locale='pl') }}</td>
+											<td>{{ user.start|format_datetime(pattern="d LLL, h:mm", locale='pl') }}</td>
+											<td>{{ user.stop ? user.stop|format_datetime(pattern="d LLL, h:mm", locale='pl') }}</td>
 											<td>{{ user.stop ? date(user.stop).diff(date(user.start))|date("%hh %im") : date("now").diff(date(user.start))|date("%hh %im") }}</td>
 										</tr>
 									{% endfor %}

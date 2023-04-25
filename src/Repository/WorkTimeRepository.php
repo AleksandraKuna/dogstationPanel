@@ -42,10 +42,11 @@ class WorkTimeRepository extends ServiceEntityRepository
    /**
     * @return WorkTime[] Returns an array of WorkTime objects
     */
-   public function findByDate($value): array
+   public function workingToday($value): array
    {
        return $this->createQueryBuilder('w')
            ->andWhere('w.start >= :val')
+           ->orWhere('(w.start IS NOT NULL AND w.stop IS NULL)')
            ->setParameter('val', $value)
            ->orderBy('w.id', 'ASC')
         //    ->setMaxResults(10)

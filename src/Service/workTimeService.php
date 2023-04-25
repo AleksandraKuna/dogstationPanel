@@ -47,7 +47,7 @@ class workTimeService
         if (in_array('ROLE_ADMIN', $user->getRoles(), true)) 
         {
             
-            $workTime = $this->em->getRepository(WorkTime::class)->findByDate($date->format('Y-m-d'));
+            $workTime = $this->em->getRepository(WorkTime::class)->workingToday($date->format('Y-m-d'));
             $data['users'] = $workTime;
         }
         
