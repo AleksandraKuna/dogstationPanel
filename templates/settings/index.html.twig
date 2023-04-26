@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% use "settings/_parts/prices.html.twig" %}
+{% use "settings/_parts/rooms.html.twig" %}
+{% use "panel/menu.html.twig" %}
+
+{% block title %}Ustawienia
+{% endblock %}
+
+{% block body %}
+ {{ block("menu") }}
+
+ <div class="container">
+  <div class="row">
+   <div class="col-md-6">
+    {{ block("pricesSettings") }}
+   </div>
+   <div class="col-md-6">
+
+    {{ block("roomsSettings") }}
+   </div>
+  </div>
+</div>
+ {% endblock %}

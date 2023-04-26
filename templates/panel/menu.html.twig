@@ -1,15 +1,17 @@
 
 {% block menu %}
-
+{% set route_name = app.request.attributes.get('_route') %}
 <div class="w-100 menu shadow-sm">
     <p>DOGSTATION</p>
     <div class="links">
-        <a href="/">PANEL</a>
+        <a href="/" {% if route_name == "app_panel" %} class="active" {% endif %}>PANEL</a>
         {% if is_granted('ROLE_ADMIN') %} 
-            <a href="{{url("app_user")}}">UŻYTKOWNICY</a>
+            <a href="{{url("app_user")}}" {% if route_name == "app_user" %} class="active" {% endif %}>UŻYTKOWNICY</a>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %} 
+            <a href="{{url("app_settings")}}" {% if route_name == "app_settings" %} class="active" {% endif %}>USTAWIENIA</a>
         {% endif %}
         <a href="{{url("app_logout")}}" class="btn btn-info"><i class="fa fa-sign-out"></i> Wyloguj</a>
     </div>
 </div>
-
 {% endblock %}
