@@ -88,6 +88,17 @@ $theme-colors: (
     font-size: 16px;
     line-height: 27px;
 }
+
+.changePassword{
+    border-radius: 0.375rem;
+
+    .text{
+        padding: 10px;
+    }
+    .mb-4 {
+        margin-bottom: 4px !important;
+    }
+}
 // a.btn-circle.btn-lg {
 // }
 

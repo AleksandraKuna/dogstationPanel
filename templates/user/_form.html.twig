@@ -1,4 +1,5 @@
 {{ form_start(form) }}
+{{ form_errors(form.password) }}
 {# {{ form_widget(form) }} #}
 <div class="row mx-0">
  <div class="form-floating mb-4 col-md-6 gx-1">
@@ -16,6 +17,17 @@
  <div class="form-floating mb-4 col-md-6 gx-1">
   {{ form_widget(form.surname, {'attr': {'class': 'form-control', placeholder: 'surname'}}) }}
   <label>{{ form_label(form.surname) }}</label>
+ </div>
+ <div class="changePassword mb-4 row bg-info gx-1">
+  <div class="text text-white">Wypełnij jeśli chcesz zmienić hasło</div>
+  <div class="form-floating mb-4 col-md-6 gx-1">
+   {{ form_widget(form.password.first, {'attr': {'class': 'form-control', placeholder: 'haslo'}})}}
+   <label>{{ form_label(form.password.first) }}</label>
+  </div>
+  <div class="form-floating mb-4 col-md-6 gx-1">
+   {{ form_widget(form.password.second, {'attr': {'class': 'form-control', placeholder: 'haslo'}})}}
+   <label>{{ form_label(form.password.second) }}</label>
+  </div>
  </div>
  <div class="form mb-4 col-md-6 gx-1">
   <label>{{ form_label(form.roles) }}</label>
